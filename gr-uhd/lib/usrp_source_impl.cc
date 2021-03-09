@@ -334,6 +334,19 @@ void usrp_source_impl::set_lo_source(const std::string& src,
 #endif
 }
 
+void usrp_source_impl::set_lo_distribution_enabled(bool enabled,
+                                                   const std::string& name,
+                                                   const std::string& output,
+                                                   size_t chan)
+{
+#ifdef UHD_USRP_MULTI_USRP_LO_CONFIG_API
+    chan = _stream_args.channels[chan];
+    return _dev->set_rx_lo_distribution(enabled, name, output, chan);
+#else
+    throw std::runtime_error("not implemented in this version");
+#endif
+}
+
 bool usrp_source_impl::get_lo_export_enabled(const std::string& name, size_t chan)
 {
 #ifdef UHD_USRP_MULTI_USRP_LO_CONFIG_API

@@ -156,6 +156,20 @@ public:
                                                     size_t chan = 0) = 0;
 
     /*!
+     * Set whether the LO splitter output is active
+     * For USRPs that support distributable LOs, this function
+     * configures if the distributor outputs are active or not.
+     * \param enabled if true then set the output active
+     * \param name the name of the LO stage to update
+     * \param output the output to update (e.g., LO_OUT_0, LO_OUT_1, ...)
+     * \param chan the channel index 0 to N-1 for the source channel
+     */
+    virtual void set_lo_distribution_enabled(bool enabled,
+                                             const std::string& name,
+                                             const std::string& output,
+                                             size_t chan = 0) = 0;
+
+    /*!
      * Set whether the LO used by the usrp device is exported
      * For usrps that support exportable LOs, this function
      * configures if the LO used by chan is exported or not.

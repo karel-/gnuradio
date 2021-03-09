@@ -105,6 +105,10 @@ public:
     void set_lo_source(const std::string& src,
                        const std::string& name = ALL_LOS,
                        size_t chan = 0) override;
+    void set_lo_distribution_enabled(bool enabled,
+                                     const std::string& name,
+                                     const std::string& output,
+                                     size_t chan) override;
     void set_lo_export_enabled(bool enabled,
                                const std::string& name = ALL_LOS,
                                size_t chan = 0) override;
