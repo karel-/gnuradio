@@ -816,6 +816,7 @@ void usrp_sink_impl::async_event_loop()
                 last_time_err_log = now;
                 time_error_counter = 0;
             }
+            stop(); // stop if any late packets
         }
         if (sequence_error_counter) {
             auto now = clock::now();
